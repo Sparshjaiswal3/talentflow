@@ -89,15 +89,11 @@ class RootErrorBoundary extends React.Component {
 }
 
 async function enableMocks() {
-  if (import.meta.env.DEV) {
-    try {
-      const { worker } = await import("./mocks/browser");
-      await worker.start({ onUnhandledRequest: "bypass" });
-      console.info("[MSW] Mock service worker running.");
-    } catch (e) {
-      console.warn("[MSW] Failed to start:", e);
-    }
-  }
+  if (import.meta.env.DEV || import.meta.env.VITE_ENABLE_MSW === "true") {
+  const { worker } = await import("./mocks/browser");
+  await worker.start({ onUnhandledRequest: "bypass" });
+}
+
 }
 
 // Optional: sync dark mode class on first paint (if you use media/system preference)
