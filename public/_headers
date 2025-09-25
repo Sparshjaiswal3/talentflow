@@ -1,0 +1,3 @@
+/mockServiceWorker.js
+  Cache-Control: no-store, must-revalidate
+  Service-Worker-Allowed: /
