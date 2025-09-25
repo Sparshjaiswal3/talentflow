@@ -1,0 +1,126 @@
+/* This stylesheet only affects the AssessmentRun page via the .tf-assess scope */
+@layer base {
+  .tf-assess {
+    --afg: 15 23 42;      /* slate-900 */
+    --amuted: 71 85 105;  /* slate-600 */
+    --asubtle: 100 116 139; /* slate-500 */
+    --abg: 255 255 255;   /* white */
+    --acard: 255 255 255; /* white */
+    --aborder: 203 213 225; /* slate-300 */
+    --aring: 99 102 241;  /* indigo-500 */
+    --aaccent: 79 70 229; /* indigo-600 */
+  }
+  [data-theme="dark"] .tf-assess {
+    --afg: 241 245 249;     /* slate-100 */
+    --amuted: 203 213 225;  /* slate-300 */
+    --asubtle: 148 163 184; /* slate-400 */
+    --abg: 2 6 23;          /* slate-950 */
+    --acard: 15 23 42;      /* slate-900 */
+    --aborder: 51 65 85;    /* slate-700 */
+    --aring: 129 140 248;   /* indigo-400 */
+    --aaccent: 99 102 241;  /* indigo-500 */
+  }
+
+  .tf-assess {
+    color: rgb(var(--afg));
+  }
+
+  /* Cards/containers on this page */
+  .tf-assess .a-card {
+    background: rgb(var(--acard));
+    border: 1px solid rgb(var(--aborder));
+    border-radius: 12px;
+    box-shadow: 0 1px 0 rgb(0 0 0 / 0.04);
+  }
+
+  /* Highly readable fields, placeholders, and focus ring — only here */
+  .tf-assess :where(input, select, textarea) {
+    font-size: 0.95rem;
+    border: 1px solid rgb(var(--aborder));
+    background: rgb(var(--abg));
+    color: rgb(var(--afg));
+    border-radius: 10px;
+    padding: 0.55rem 0.7rem;
+  }
+  .tf-assess :where(input, select, textarea)::placeholder {
+    color: rgb(var(--asubtle));
+    opacity: 1;
+  }
+  .tf-assess :where(input, select, textarea):focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px color-mix(in srgb, rgb(var(--aring)) 65%, transparent);
+    border-color: color-mix(in srgb, rgb(var(--aring)) 60%, rgb(var(--aborder)));
+  }
+
+  /* Labels & helper text: slightly larger, stronger contrast */
+  .tf-assess .a-label {
+    color: rgb(var(--afg));
+    font-weight: 600;
+  }
+  .tf-assess .a-help {
+    color: rgb(var(--asubtle));
+    font-size: 11.5px;
+  }
+  .tf-assess .a-muted { color: rgb(var(--amuted)); }
+  .tf-assess .a-subtle { color: rgb(var(--asubtle)); }
+
+  /* Error text */
+  .tf-assess .a-error {
+    color: #ef4444; /* red-500 */
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* REQUIRED badge */
+  .tf-assess .a-required {
+    background: color-mix(in srgb, rgb(239 68 68) 14%, transparent);
+    color: rgb(220 38 38);
+    border: 1px solid color-mix(in srgb, rgb(239 68 68) 28%, transparent);
+    border-radius: 6px;
+    padding: 2px 6px;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  /* Sticky header & sticky submit bar look crisp on any theme */
+  .tf-assess .a-sticky {
+    background: color-mix(in srgb, rgb(var(--acard)) 92%, transparent);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgb(var(--aborder));
+    border-radius: 10px;
+  }
+
+  /* Nice scrollbar only in this page */
+  .tf-assess .nice-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, rgb(var(--asubtle)) 60%, transparent) transparent;
+  }
+  .tf-assess .nice-scroll::-webkit-scrollbar {
+    width: 10px; height: 10px; background: transparent;
+  }
+  .tf-assess .nice-scroll::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, rgb(var(--asubtle)) 75%, transparent);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  .tf-assess .nice-scroll::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, rgb(var(--asubtle)) 95%, transparent);
+  }
+
+  /* Buttons in this page: accent color with good contrast */
+  .tf-assess .a-btn {
+    background: rgb(var(--aaccent));
+    color: white;
+    border-radius: 10px;
+    padding: 0.55rem 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 1px 0 rgb(0 0 0 / 0.06);
+  }
+  .tf-assess .a-btn:hover {
+    filter: brightness(0.96);
+  }
+  .tf-assess .a-btn:disabled {
+    opacity: 0.65;
+  }
+}

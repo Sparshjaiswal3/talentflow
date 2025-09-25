@@ -1,0 +1,134 @@
+/* Scope everything to .tf-ap so this does not leak to other pages */
+@layer base {
+  .tf-ap {
+    --ap-fg: 15 23 42;       /* slate-900 */
+    --ap-sub: 100 116 139;   /* slate-500 */
+    --ap-muted: 71 85 105;   /* slate-600 */
+    --ap-bg: 255 255 255;    /* white */
+    --ap-card: 255 255 255;  /* white */
+    --ap-border: 203 213 225;/* slate-300 */
+    --ap-ring: 99 102 241;   /* indigo-500 */
+    --ap-accent: 79 70 229;  /* indigo-600 */
+    --ap-chip: 241 245 249;  /* slate-100 */
+  }
+  [data-theme="dark"] .tf-ap {
+    --ap-fg: 241 245 249;       /* slate-100 */
+    --ap-sub: 148 163 184;      /* slate-400 */
+    --ap-muted: 203 213 225;    /* slate-300 */
+    --ap-bg: 2 6 23;            /* slate-950 */
+    --ap-card: 15 23 42;        /* slate-900 */
+    --ap-border: 51 65 85;      /* slate-700 */
+    --ap-ring: 129 140 248;     /* indigo-400 */
+    --ap-accent: 99 102 241;    /* indigo-500 */
+    --ap-chip: 30 41 59;        /* slate-800 */
+  }
+
+  .tf-ap .a-fg { color: rgb(var(--ap-fg)); }
+
+  /* Card */
+  .tf-ap .a-card {
+    background: rgb(var(--ap-card));
+    border: 1px solid rgb(var(--ap-border));
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 0 rgb(0 0 0 / 0.04);
+  }
+  .tf-ap .a-card-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 14px;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, rgb(var(--ap-accent)) 10%, transparent), transparent);
+    border-bottom: 1px solid rgb(var(--ap-border));
+  }
+  .tf-ap .a-sec-title {
+    color: rgb(var(--ap-fg));
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .tf-ap .a-sec-count {
+    font-size: 10.5px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: rgb(var(--ap-sub));
+  }
+
+  /* List */
+  .tf-ap .a-q-list { padding: 10px 14px 14px; display: grid; gap: 12px; }
+  .tf-ap .a-q-item { padding: 8px 10px; border-radius: 10px; background: color-mix(in srgb, rgb(var(--ap-bg)) 80%, transparent); }
+
+  /* Labels / badges */
+  .tf-ap .a-label {
+    display: inline-flex; align-items: baseline; gap: 8px;
+    color: rgb(var(--ap-fg));
+  }
+  .tf-ap .a-required {
+    background: color-mix(in srgb, rgb(239 68 68) 14%, transparent);
+    color: rgb(220 38 38);
+    border: 1px solid color-mix(in srgb, rgb(239 68 68) 28%, transparent);
+    border-radius: 6px;
+    padding: 2px 6px;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  /* Inputs (only here) */
+  .tf-ap .a-input {
+    border: 1px solid rgb(var(--ap-border));
+    background: rgb(var(--ap-bg));
+    color: rgb(var(--ap-fg));
+    padding: 8px 10px;
+    border-radius: 10px;
+  }
+  .tf-ap .a-input::placeholder { color: rgb(var(--ap-sub)); opacity: 1; }
+  .tf-ap .a-input:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px color-mix(in srgb, rgb(var(--ap-ring)) 65%, transparent);
+    border-color: color-mix(in srgb, rgb(var(--ap-ring)) 60%, rgb(var(--ap-border)));
+  }
+
+  /* Multi select chip */
+  .tf-ap .a-chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 10px; border-radius: 999px;
+    border: 1px solid rgb(var(--ap-border));
+    background: rgb(var(--ap-chip));
+    color: rgb(var(--ap-fg));
+    cursor: pointer;
+    user-select: none;
+  }
+  .tf-ap .a-chip:hover {
+    filter: brightness(0.98);
+  }
+  .tf-ap .a-checkbox {
+    width: 16px; height: 16px;
+    accent-color: rgb(var(--ap-accent));
+  }
+
+  /* Help text */
+  .tf-ap .a-help { color: rgb(var(--ap-sub)); font-size: 11.5px; }
+
+  /* Buttons */
+  .tf-ap .a-btn {
+    border-radius: 10px;
+    padding: 6px 10px;
+    font-weight: 600;
+    border: 1px solid rgb(var(--ap-border));
+    background: rgb(var(--ap-bg));
+    color: rgb(var(--ap-fg));
+  }
+  .tf-ap .a-btn-ghost:hover { background: color-mix(in srgb, rgb(var(--ap-ring)) 8%, transparent); }
+
+  /* Scrollbar (component scope) */
+  .tf-ap .nice-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, rgb(var(--ap-sub)) 60%, transparent) transparent;
+  }
+  .tf-ap .nice-scroll::-webkit-scrollbar { width: 10px; height: 10px; background: transparent; }
+  .tf-ap .nice-scroll::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, rgb(var(--ap-sub)) 75%, transparent);
+    border-radius: 999px; border: 2px solid transparent; background-clip: padding-box;
+  }
+  .tf-ap .nice-scroll::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, rgb(var(--ap-sub)) 95%, transparent);
+  }
+}
